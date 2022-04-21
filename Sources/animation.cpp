@@ -19,3 +19,10 @@ void animation::FlashWindows() {
 	fi.dwTimeout = 0;
 	FlashWindowEx(&fi);
 }
+
+void animation::DisableSelection()
+{
+	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+
+	SetConsoleMode(hStdin, ~ENABLE_QUICK_EDIT_MODE);
+}
