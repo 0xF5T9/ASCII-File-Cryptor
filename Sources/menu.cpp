@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <string>
 #include "../Sources/Headers/menu.h"
 #include "../Sources/Headers/cryptor.h"
 #include "../Sources/Headers/animation.h"
@@ -47,7 +48,7 @@ void menu::ProcessOption(int option) {
 		std::cout << "# Mã hoá lại với số PIN thấp hơn nếu file bị lỗi và không thể giải mã\n";
 		std::cout << std::endl;
 		std::cout << "Nhập tên file: ";
-		std::cin >> filename;
+		std::getline(std::cin, filename);
 		std::cout << "Nhập pin mã hoá: ";
 		std::cin >> pin;
 		CryptorMenuObj.Encrypt(filename, pin);
@@ -63,7 +64,7 @@ void menu::ProcessOption(int option) {
 		std::cout << "# Nhập sai mã PIN sẽ dẫn tới file hỏng hoàn toàn\n";
 		std::cout << std::endl;
 		std::cout << "Nhập tên file: ";
-		std::cin >> filename;
+		std::getline(std::cin, filename);
 		std::cout << "Nhập pin mã hoá: ";
 		std::cin >> pin;
 		CryptorMenuObj.Decrypt(filename, pin);

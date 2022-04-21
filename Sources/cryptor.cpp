@@ -25,7 +25,7 @@ void cryptor::Encrypt(std::string filename, long long int pin) {
 	if (!InputFile) {
 		InputFile.close();
 		CryptFile.close();
-		system("del /f crypting");
+		system("del /f \"crypting\"");
 		std::cout << "Không tìm thấy hoặc không thể truy cập file ";
 		AnimationCryptorObj.DotAnimation(500);
 		std::cin.clear();
@@ -48,8 +48,8 @@ void cryptor::Encrypt(std::string filename, long long int pin) {
 	Sleep(1000);
 	InputFile.close();
 	CryptFile.close();
-	system(("del /f " + OriginalFileName).c_str());
-	system(("ren crypting " + OriginalFileName).c_str());
+	system(("del /f \"" + OriginalFileName + "\"").c_str());
+	system(("ren \"crypting\" \"" + OriginalFileName + "\"").c_str());
 	TimerCryptorObj.End();
 	TimerCryptorObj.Calc();
 	PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_SYNC);
@@ -70,7 +70,7 @@ void cryptor::Decrypt(std::string filename, long long int pin) {
 	if (!InputFile) {
 		InputFile.close();
 		DecryptFile.close();
-		system("del /f decrypting");
+		system("del /f \"decrypting\"");
 		std::cout << "Không tìm thấy hoặc không thể truy cập file ";
 		AnimationCryptorObj.DotAnimation(500);
 		std::cin.clear();
@@ -93,8 +93,8 @@ void cryptor::Decrypt(std::string filename, long long int pin) {
 	Sleep(1000);
 	InputFile.close();
 	DecryptFile.close();
-	system(("del /f " + OriginalFileName).c_str());
-	system(("ren decrypting " + OriginalFileName).c_str());
+	system(("del /f \"" + OriginalFileName + "\"").c_str());
+	system(("ren \"decrypting\" \"" + OriginalFileName + "\"").c_str());
 	TimerCryptorObj.End();
 	TimerCryptorObj.Calc();
 	PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_SYNC);
