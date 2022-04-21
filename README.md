@@ -17,3 +17,7 @@ VS Project Configurations:
 
 Executables:
 - The target file must be located in the same directory as the executable file to be found.
+
+Notes:
+- The file could be recognized as malware by Anti Virus because it perform sensitive tasks.
+- Either excluded the file from Anti Virus or compile the code yourself.
