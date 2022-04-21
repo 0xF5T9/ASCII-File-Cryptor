@@ -9,3 +9,13 @@ void animation::DotAnimation(int milliseconds) {
 		std::cout << ".";
 	}
 }
+
+void animation::FlashWindows() {
+	FLASHWINFO fi;
+	fi.cbSize = sizeof(FLASHWINFO);
+	fi.hwnd = (HWND)(GetConsoleWindow());
+	fi.dwFlags = FLASHW_TRAY;
+	fi.uCount = 3;
+	fi.dwTimeout = 0;
+	FlashWindowEx(&fi);
+}

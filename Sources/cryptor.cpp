@@ -54,6 +54,7 @@ void cryptor::Encrypt(std::string filename, long long int pin) {
 	TimerCryptorObj.Calc();
 	PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_SYNC);
 	SetConsoleTitle(L"ASCII File Cryptor");
+	AnimationCryptorObj.FlashWindows();
 	system("pause");
 escape:
 	std::cout << "";
@@ -99,6 +100,7 @@ void cryptor::Decrypt(std::string filename, long long int pin) {
 	TimerCryptorObj.Calc();
 	PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_SYNC);
 	SetConsoleTitle(L"ASCII File Cryptor");
+	AnimationCryptorObj.FlashWindows();
 	system("pause");
 escape:
 	std::cout << "";
