@@ -42,16 +42,20 @@ void menu::ProcessOption(int option) {
 		ShowMenu();
 		std::cout << std::endl;
 		std::string filename;
-		long long int pin;
+		std::string password;
 		std::cout << "# Backup file gốc trước khi mã hoá tránh lỗi.\n";
-		std::cout << "# Mã PIN phải là số nguyên (ví dụ: 9595)\n";
-		std::cout << "# Mã hoá lại với số PIN thấp hơn nếu file bị lỗi và không thể giải mã\n";
+		std::cout << "# Mật khẩu mã hoá cho phép tối đa 100 ký tự.\n";
+		std::cout << "# Chấp nhận chữ cái và số latin, các ký tự đặt biệt ~!@#$%^&*()_ và cả khoảng trống.\n";
 		std::cout << std::endl;
 		std::cout << "Nhập tên file: ";
 		std::getline(std::cin, filename);
-		std::cout << "Nhập pin mã hoá: ";
-		std::cin >> pin;
-		CryptorMenuObj.Encrypt(filename, pin);
+		while (true) {
+			std::cout << "Nhập mật khẩu mã hoá: ";
+			std::getline(std::cin, password);
+			if (password.length() <= 100) break;
+			else std::cout << "Mật khẩu mã hoá cho phép tối đa 100 ký tự." << std::endl;
+		}
+		CryptorMenuObj.Encrypt(filename, password);
 		break; 
 	}
 	case 2: {
@@ -59,15 +63,19 @@ void menu::ProcessOption(int option) {
 		ShowMenu();
 		std::cout << std::endl;
 		std::string filename;
-		long long int pin;
-		std::cout << "# Backup file gốc trước khi giải mã tránh lỗi hoặc để thử lại nếu nhập sai mã.\n";
-		std::cout << "# Nhập sai mã PIN sẽ dẫn tới file hỏng hoàn toàn\n";
+		std::string password;
+		std::cout << "# Backup file gốc trước khi giải mã tránh lỗi hoặc để thử lại nếu nhập sai mật khẩu.\n";
+		std::cout << "# Nhập sai mật khẫu mã hoá sẽ dẫn tới file hỏng hoàn toàn\n";
 		std::cout << std::endl;
 		std::cout << "Nhập tên file: ";
 		std::getline(std::cin, filename);
-		std::cout << "Nhập pin mã hoá: ";
-		std::cin >> pin;
-		CryptorMenuObj.Decrypt(filename, pin);
+		while (true) {
+			std::cout << "Nhập mật khẩu mã hoá: ";
+			std::getline(std::cin, password);
+			if (password.length() <= 100) break;
+			else std::cout << "Mật khẩu mã hoá cho phép tối đa 100 ký tự." << std::endl;
+		}
+		CryptorMenuObj.Decrypt(filename, password);
 		break; 
 	}
 	case 3:
