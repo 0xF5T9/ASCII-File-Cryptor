@@ -45,7 +45,7 @@ void menu::ProcessOption(int option) {
 		std::string password;
 		std::cout << "# Backup file gốc trước khi mã hoá tránh lỗi.\n";
 		std::cout << "# Mật khẩu mã hoá cho phép tối đa 100 ký tự.\n";
-		std::cout << "# Chấp nhận chữ cái và số latin, các ký tự đặt biệt ~!@#$%^&*()_ và cả khoảng trống.\n";
+		std::cout << "# Chấp nhận chữ cái và số latin, các ký tự đặc biệt ~!@#$%^&*()_ và cả khoảng trống.\n";
 		std::cout << std::endl;
 		std::cout << "Nhập tên file: ";
 		std::getline(std::cin, filename);
