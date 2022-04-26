@@ -82,7 +82,7 @@ void menu::ProcessOption(int option) {
 		system("cls");
 		ShowMenu();
 		std::cout << std::endl;
-		std::cout << "Đang thoát chương trình ";
+		std::cout << "> ";
 		AnimationMenuObj.DotAnimation(100);
 		exit(0);
 		break;
