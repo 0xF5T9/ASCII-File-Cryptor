@@ -26,6 +26,7 @@
     <ClCompile Include="Sources\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="func.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sources\Headers\animation.h" />
     <ClInclude Include="Sources\Headers\cryptor.h" />

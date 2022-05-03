@@ -47,6 +47,9 @@
     <ClInclude Include="Sources\Headers\timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ASCII File Cryptor.rc">

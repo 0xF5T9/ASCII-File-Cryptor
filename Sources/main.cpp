@@ -2,22 +2,33 @@
 #include <fstream>
 #include <string>
 #include <Windows.h>
-#include "../Sources/Headers/menu.h"
-#include "../Sources/Headers/cryptor.h"
 #include "../Sources/Headers/animation.h"
-
-/*	Tạo object từ classes (Create object from classes)	*/
-menu MenuMainObj;
-animation AnimationMainObj;
-
-using namespace std;
+#include "../Sources/Headers/timer.h"
+#include "../Sources/Headers/cryptor.h"
+#include "../Sources/Headers/menu.h"
+#include "../func.h"
 
 int main() {
-	SetConsoleOutputCP(65001);	//	Hỗ trợ văn bản utf-8 (Support utf-8)
-	AnimationMainObj.DisableSelection(); //	Vô hiệu console select (Disable console selection)
+
+	/*	Initialize program parameters	*/
+	animation* Animation = CreateObjectAnimation();
+	timer* Timer = CreateObjectTimer();
+	cryptor* Cryptor = CreateObjectCryptor(Animation, Timer);
+	menu* Menu = CreateObjectMenu(Animation, Cryptor);
+	SetConsoleOutputCP(65001);	//	Set code page utf-8
+	Animation->DisableSelection();	//	Disable console selection
+	
+	/*	Start the program	*/
 	while (true) {
 		SetConsoleTitle(L"ASCII File Cryptor");
-		MenuMainObj.ProcessOption(MenuMainObj.SelectOption());
+		bool EXITPROGRAM = Menu->ProcessOption(Menu->SelectOption());
+		if (EXITPROGRAM == true) break;
 	}
+
+	/*	End the program	*/
+	FreeMemory(Animation);
+	FreeMemory(Timer);
+	FreeMemory(Cryptor);
+	FreeMemory(Menu);
 	return 0;
 }

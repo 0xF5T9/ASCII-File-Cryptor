@@ -4,13 +4,8 @@
 #include "../Sources/Headers/cryptor.h"
 #include "../Sources/Headers/animation.h"
 
-
-/*	Tạo object từ classes (Create object from classes)	*/
-cryptor CryptorMenuObj;
-animation AnimationMenuObj;
-
-/*	Định nghĩa các hàm class 'menu' (Define 'menu' class functions)	*/
-void menu::ShowMenu() {
+/*	Define 'menu' class functions	*/
+void menu::ShowMenu() const {
 	std::cout << "1. Mã hoá file\n";
 	std::cout << "2. Giải mã file\n";
 	std::cout << "3. Thoát chương trình";
@@ -18,25 +13,26 @@ void menu::ShowMenu() {
 }
 
 int menu::SelectOption() {
-	int i;
+	int iOption;
 	bool ValidOption = false;
 	while (ValidOption == false) {
 		system("cls");
 		ShowMenu();
 		std::cout << std::endl;
 		std::cout << "Nhập lựa chọn: ";
-		std::cin >> i;
-		if (i > 0 && i < 4) {
+		std::cin >> iOption;
+		if (iOption > 0 && iOption < 4) {
 			ValidOption = true;
 		}
 		std::cin.clear();
 		std::cin.ignore(10000, '\n');
 	}
-	return i;
+	return iOption;
 }
 
-void menu::ProcessOption(int option) {
-	switch (option) {
+bool menu::ProcessOption(int _option) {
+	bool EXITPROGRAM = false;
+	switch (_option) {
 	case 1: {
 		system("cls");
 		ShowMenu();
@@ -55,7 +51,7 @@ void menu::ProcessOption(int option) {
 			if (password.length() <= 100) break;
 			else std::cout << "Mật khẩu mã hoá cho phép tối đa 100 ký tự." << std::endl;
 		}
-		CryptorMenuObj.Encrypt(filename, password);
+		Cryptor->Encrypt(filename, password);
 		break; 
 	}
 	case 2: {
@@ -75,7 +71,7 @@ void menu::ProcessOption(int option) {
 			if (password.length() <= 100) break;
 			else std::cout << "Mật khẩu mã hoá cho phép tối đa 100 ký tự." << std::endl;
 		}
-		CryptorMenuObj.Decrypt(filename, password);
+		Cryptor->Decrypt(filename, password);
 		break; 
 	}
 	case 3:
@@ -83,10 +79,12 @@ void menu::ProcessOption(int option) {
 		ShowMenu();
 		std::cout << std::endl;
 		std::cout << "> ";
-		AnimationMenuObj.DotAnimation(100);
-		exit(0);
+		Animation->DotAnimation(100);
+		system("cls");
+		EXITPROGRAM = true;
 		break;
 	default:
 		break;
 	}
+	return EXITPROGRAM;
 }

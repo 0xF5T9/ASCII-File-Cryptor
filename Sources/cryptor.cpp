@@ -8,12 +8,7 @@
 #include "../Sources/Headers/timer.h"
 #include "../resource.h"
 
-
-/*	Tạo object từ classes (Create object from classes)	*/
-animation AnimationCryptorObj;
-timer TimerCryptorObj;
-
-/*	Định nghĩa các hàm class 'cryptor' (Define 'cryptor' class functions)	*/
+/*	Define 'cryptor' class functions	*/
 int cryptor::ConvertIntoKey(std::string password) {
 	char cpassword[100];
 	int cryptkey = 0;
@@ -26,7 +21,7 @@ int cryptor::ConvertIntoKey(std::string password) {
 
 void cryptor::Encrypt(std::string filename, std::string password) {
 	SetConsoleTitle(L"ASCII File Cryptor - Encrypting");
-	TimerCryptorObj.Start();
+	Timer->Start();
 	char i;
 	std::string OriginalFileName = filename;
 	std::string TempData;
@@ -38,12 +33,12 @@ void cryptor::Encrypt(std::string filename, std::string password) {
 		CryptFile.close();
 		system("del /f \"crypting\"");
 		std::cout << "Không tìm thấy hoặc không thể truy cập file ";
-		AnimationCryptorObj.DotAnimation(500);
+		Animation->DotAnimation(500);
 		goto escape;
 	}
 	if (!CryptFile) {
 		std::cout << "Không thể tạo file tạm thời (Thiếu quyền?) ";
-		AnimationCryptorObj.DotAnimation(500);
+		Animation->DotAnimation(500);
 		goto escape;
 	}
 	while (InputFile >> std::noskipws >> i) {
@@ -58,11 +53,11 @@ void cryptor::Encrypt(std::string filename, std::string password) {
 	CryptFile.close();
 	system(("del /f \"" + OriginalFileName + "\"").c_str());
 	system(("ren \"crypting\" \"" + OriginalFileName + "\"").c_str());
-	TimerCryptorObj.End();
-	TimerCryptorObj.Calc();
+	Timer->End();
+	Timer->Calc();
 	PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_SYNC);
 	SetConsoleTitle(L"ASCII File Cryptor");
-	AnimationCryptorObj.FlashWindows();
+	Animation->FlashWindows();
 	system("pause");
 escape:
 	std::cout << "";
@@ -70,7 +65,7 @@ escape:
 
 void cryptor::Decrypt(std::string filename, std::string password) {
 	SetConsoleTitle(L"ASCII File Cryptor - Decrypting");
-	TimerCryptorObj.Start();
+	Timer->Start();
 	char i;
 	std::string OriginalFileName = filename;
 	std::string TempData;
@@ -82,12 +77,12 @@ void cryptor::Decrypt(std::string filename, std::string password) {
 		DecryptFile.close();
 		system("del /f \"decrypting\"");
 		std::cout << "Không tìm thấy hoặc không thể truy cập file ";
-		AnimationCryptorObj.DotAnimation(500);
+		Animation->DotAnimation(500);
 		goto escape;
 	}
 	if (!DecryptFile) {
 		std::cout << "Không thể tạo file tạm thời (Thiếu quyền?) ";
-		AnimationCryptorObj.DotAnimation(500);
+		Animation->DotAnimation(500);
 		goto escape;
 	}
 	while (InputFile >> std::noskipws >> i) {
@@ -101,11 +96,11 @@ void cryptor::Decrypt(std::string filename, std::string password) {
 	DecryptFile.close();
 	system(("del /f \"" + OriginalFileName + "\"").c_str());
 	system(("ren \"decrypting\" \"" + OriginalFileName + "\"").c_str());
-	TimerCryptorObj.End();
-	TimerCryptorObj.Calc();
+	Timer->End();
+	Timer->Calc();
 	PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_SYNC);
 	SetConsoleTitle(L"ASCII File Cryptor");
-	AnimationCryptorObj.FlashWindows();
+	Animation->FlashWindows();
 	system("pause");
 escape:
 	std::cout << "";

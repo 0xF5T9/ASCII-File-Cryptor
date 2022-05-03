@@ -1,16 +1,21 @@
 ﻿#pragma once
+
 class animation {
 private:
 
 public:
-	animation() {
-		//	Constructor
+	animation() {	//	Constructor
+		
 	}
-	~animation() {
-		//	Destructor
+	animation(const animation& _copy) {	//	Copy Constructor
+
 	}
-	/*	Khai báo hàm mẫu (Declare function prototypes)	*/
-	void DotAnimation(int milliseconds);
+	~animation() {	//	Destructor
+		
+	}
+
+	/*	Class function prototypes	*/
+	void DotAnimation(int _milliseconds);
 	void FlashWindows();
 	void DisableSelection();
 };
