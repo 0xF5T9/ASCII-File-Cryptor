@@ -26,10 +26,10 @@
     <ClCompile Include="Sources\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="func.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Sources\Headers\animation.h" />
     <ClInclude Include="Sources\Headers\cryptor.h" />
+    <ClInclude Include="Sources\Headers\func.h" />
     <ClInclude Include="Sources\Headers\menu.h" />
     <ClInclude Include="Sources\Headers\timer.h" />
   </ItemGroup>

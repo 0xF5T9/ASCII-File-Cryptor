@@ -47,7 +47,7 @@
     <ClInclude Include="Sources\Headers\timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="func.h">
+    <ClInclude Include="Sources\Headers\func.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

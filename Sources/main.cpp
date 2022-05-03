@@ -6,7 +6,7 @@
 #include "../Sources/Headers/timer.h"
 #include "../Sources/Headers/cryptor.h"
 #include "../Sources/Headers/menu.h"
-#include "../func.h"
+#include "../Sources/Headers/func.h"
 
 int main() {
 
